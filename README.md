@@ -1,7 +1,6 @@
 # Srifoton 2021
 
-A repository that contain Srifoton 2021 Web project and documentation. 
-For UI code, we separate on different
+A repository that contain Srifoton 2021 Web project and documentation. For UI code, we separate on different
 repositories.
 
 See the following repositories [Srifoton UI](https://github.com/Srifoton-IT-Team/srifoton-ui-2021) here.
@@ -25,8 +24,10 @@ $ php -v
 ```
 $ git clone https://github.com/Srifoton-IT-Team/srifoton-2021.git
 ```
+
 4. Install latest version of Composer.
 5. Install dependencies.
+
 ```
 $ composer update
 ```
@@ -51,4 +52,5 @@ Open http://localhost:8080 to view it in the browser.
 
 # Documentation
 
-## How it Works
+## Environment
+If you want to change base setting for project like database password, go to .env file.
