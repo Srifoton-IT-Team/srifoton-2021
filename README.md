@@ -23,10 +23,15 @@ $ php -v
 3. Clone this repo.
 
 ```
-$ git clone linkHere
+$ git clone https://github.com/Srifoton-IT-Team/srifoton-2021.git
+```
+4. Install latest version of Composer.
+5. Install dependencies.
+```
+$ composer update
 ```
 
-4. Run local development server.
+6. Run local development server.
 
 ```
 $ php spark serve
