@@ -24,15 +24,21 @@ $ php -v
 ```
 $ git clone https://github.com/Srifoton-IT-Team/srifoton-2021.git
 ```
+4. Uncomment intl extension in php.ini
 
-4. Install latest version of Composer.
-5. Install dependencies.
+```ini
+;extension=intl
+;to
+extension=intl
+```
+5. Install latest version of Composer.
+6. Install dependencies.
 
 ```
 $ composer update
 ```
 
-6. Run local development server.
+7. Run local development server.
 
 ```
 $ php spark serve
