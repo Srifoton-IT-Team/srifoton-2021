@@ -4,7 +4,7 @@
     <!--Hero-->
     <div class="relative">
 
-        <img class="absolute z-0 w-screen h-screen object-cover object-center" src="./img/bg-hero.png" alt="bg-hero">
+        <img class="absolute z-0 w-screen h-screen object-cover object-center" src="<?= base_url('assets/img/bg-hero.png') ?>" alt="bg-hero">
 
         <!--Navbar-->
         <section
@@ -18,7 +18,7 @@
             <div class="navbar-1-1">
                 <div class="container mx-auto flex flex-wrap flex-row items-center justify-between">
                     <a href="" class="flex font-medium items-center">
-                        <img class="h-16" src="./img/logo.png" alt="logo">
+                        <img class="h-16" src="<?= base_url('assets/img/logo.png') ?>" alt="logo">
                         <h5 class="text-white font-azonix pl-4 2xl:text-2xl">Srifoton</h5>
                     </a>
                     <label for="menu-toggle" class="cursor-pointer lg:hidden block">
@@ -56,7 +56,7 @@
 
             <!-- Blob  -->
             <div class="flex justify-center items-center order-1 lg:order-2">
-                <img class="h-96 xl:h-auto" src="./img/blob-hero.png" alt="">
+                <img class="h-96 xl:h-auto" src="<?= base_url('assets/img/blob-hero.png') ?>" alt="blob-hero">
             </div>
             <!-- End of Blob  -->
 
@@ -122,7 +122,7 @@
             <!--  Item  -->
             <div class="my-36 flex flex-col justify-center items-center lg:flex-row lg:justify-between">
                 <div class="lg:max-w-lg xl:max-w-xl 2xl:max-w-full order-1">
-                    <img src="./img/dummy-cp.png" alt="banner">
+                    <img src="<?= base_url('assets/img/dummy-cp.png') ?>" alt="banner">
                 </div>
 
                 <div class="mt-8 order-2 text-center md:mt-10 lg:text-left lg:pl-10 lg:w-1/2 lg:pt-5 lg:self-start xl:pl-0">
@@ -148,7 +148,7 @@
             <!--  Item  -->
             <div class="my-36 flex flex-col-reverse justify-center items-center lg:flex-row lg:justify-between">
                 <div class="lg:max-w-lg xl:max-w-xl 2xl:max-w-full order-2">
-                    <img src="./img/dummy-cp.png" alt="banner">
+                    <img src="<?= base_url('assets/img/dummy-cp.png') ?>" alt="banner">
                 </div>
 
                 <div
@@ -175,7 +175,7 @@
             <!--  Item  -->
             <div class="my-36 flex flex-col justify-center items-center lg:flex-row lg:justify-between">
                 <div class="lg:max-w-lg xl:max-w-xl 2xl:max-w-full order-1">
-                    <img src="./img/dummy-cp.png" alt="banner">
+                    <img src="<?= base_url('assets/img/dummy-cp.png') ?>" alt="banner">
                 </div>
 
                 <div class="mt-8 order-2 text-center md:mt-10 lg:text-left lg:pl-10 lg:w-1/2 lg:pt-5 lg:self-start xl:pl-0">
@@ -202,12 +202,12 @@
 
     <!--Webinar-->
     <div id="webinar" class="relative" style="top: 100vh">
-        <img class="absolute z-0 w-screen h-screen object-cover object-top" src="./img/bg-webinar.png" alt="bg-webinar">
+        <img class="absolute z-0 w-screen h-screen object-cover object-top" src="<?= base_url('assets/img/bg-webinar.png') ?>" alt="bg-webinar">
         <div class="h-full w-full absolute z-10 px-8 mt-20">
             <div class="flex flex-col justify-center items-center">
                 <h2 class="font-azonix text-center text-white tracking-wide text-2xl md:text-3xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
                     Webinar Srifoton</h2>
-                <img class="mt-8 lg:max-w-lg xl:max-w-full" src="./img/webinar.png" alt="webinar">
+                <img class="mt-8 lg:max-w-lg xl:max-w-full" src="<?= base_url('assets/img/webinar.png') ?>" alt="webinar">
             </div>
         </div>
     </div>
