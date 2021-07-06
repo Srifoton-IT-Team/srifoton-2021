@@ -49,7 +49,7 @@
             <div class="grid lg:grid-cols-4 sm:grid-cols-2 lg:gap-0 gap-y-6">
                 <div class="">
                     <div class="mb-5 flex items-center">
-                        <img src="./img/logo.png" alt="logo">
+                        <img src="<?= base_url('assets/img/logo.png') ?>" alt="logo">
                         <h5 class="font-azonix text-gray-50 ml-3 lg:text-lg">Srifoton</h5>
                     </div>
                     <nav class="list-none list-footer space-y-5">
