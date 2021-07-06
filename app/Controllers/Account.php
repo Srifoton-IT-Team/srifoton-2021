@@ -8,4 +8,9 @@ class Account extends BaseController
 	{
 		return view('pages/AccountLogin');
 	}
+
+    public function register()
+    {
+        return view('pages/AccountRegister');
+    }
 }
