@@ -35,6 +35,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/login', 'Account::login');
 $routes->get('/register', 'Account::register');
+$routes->get('/competitive-programming', 'Competition::cp');
 
 /*
  * --------------------------------------------------------------------
