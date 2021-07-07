@@ -1,56 +1,48 @@
 <?php
 
+
 namespace App\Controllers;
 
-use App\Models\AccountModel;
+
+use App\Models\UserModel;
 
 class Register extends BaseController
 {
-    // Index for registration
     public function index()
     {
         helper(['form']);
         $data = [];
-        echo view('pages/AccountRegister', $data);
+        echo view('pages/account_register', $data);
     }
 
-    // Submission function that run when a user completed the form
-    public function submit()
+    public function save()
     {
         helper(['form']);
-
-        // Rules for register validation
         $rules = [
-            'name'          => 'required',
-            'nim'           => 'required|is_unique[accounts.nim]',
-            'university'    => 'required',
-            'whatsapp'      => 'required|min_length[11]',
-            'email'         => 'required|valid_email|is_unique[accounts.email]',
-            'password'      => 'required|min_length[8]',
-            'confpwd'       => 'required|matches[password]',
+            'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[users.email]',
+            'password' => 'required|min_length[6]|max_length[200]',
+            'confirm-password' => 'matches[password]',
+            'name' => 'required|min_length[6]|max_length[200]',
+            'nim' => 'required|min_length[11]|max_length[11]',
+            'university' => 'required|min_length[1]|max_length[200]',
+            'whatsapp' => 'required|min_length[10]|max_length[16]'
         ];
 
-        /**
-         * If validation is successful, store validated data to accounts table inside the database
-         * Password hashing happens here.
-         */
         if ($this->validate($rules)) {
-            $model = New AccountModel();
+            $model = new UserModel();
             $data = [
-                'name'          => $this->request->getVar('name'),
-                'nim'           => $this->request->getVar('nim'),
-                'university'    => $this->request->getVar('university'),
-                'whatsapp'      => $this->request->getVar('whatsapp'),
-                'email'         => $this->request->getVar('email'),
-                'password'      => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+                'email' => $this->request->getVar('email'),
+                'fullname' => $this->request->getVar('name'),
+                'nim_nisn' => $this->request->getVar('nim'),
+                'nomor_telephone_whatsapp' => $this->request->getVar('whatsapp'),
+                'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+                'universitas_sekolah' => $this->request->getVar('university')
             ];
             $model->save($data);
-            // Redirect to login page if validation success and data has stored
             return redirect()->to('/login');
-        } else {
-            // Returns to register page if validation failed
+        }else{
             $data['validation'] = $this->validator;
-            echo view('pages/AccountRegister', $data);
+            echo view('pages/account_register', $data);
         }
     }
 }
