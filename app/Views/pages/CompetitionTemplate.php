@@ -44,39 +44,37 @@
             <?php if ($timelineCount % 2 == 0): ?>
                 <!--  Item Right  -->
                 <div class="timeline__component">
-                    <div class="timeline__date timeline__date--right">August 30, 2017</div>
+                    <div class="timeline__date timeline__date--right"><?= $timeline['date'] ?></div>
                 </div>
                 <div class="timeline__middle">
                     <div class="timeline__point"></div>
                 </div>
                 <div class="timeline__component timeline__component--bg">
-                    <h2 class="timeline__title">Published First Video</h2>
+                    <h2 class="timeline__title"><?= $timeline['heading'] ?></h2>
                     <p class="timeline__paragraph">
-                        My first YouTube video was a tutorial on how to build a client-server sockets app in Java.
+                        <?= $timeline['desc'] ?>
                     </p>
                     <p class="font-medium mt-4">
-                        22 Januari 2021 - 24 Januari 2021
+                        <?= $timeline['full_date'] ?>
                     </p>
                 </div>
                 <!--  End of Item Right  -->
             <?php else: ?>
                 <!--  Item Left  -->
                 <div class="timeline__component timeline__component--bg">
-                    <h2 class="timeline__title">5,000 Subscribers Q&A</h2>
+                    <h2 class="timeline__title"><?= $timeline['heading'] ?></h2>
                     <p class="timeline__paragraph">
-                        To celebrate 5,000 subscribers, I published a video answering some of the most popular questions
-                        which
-                        my viewers had asked me since starting my YouTube channel.
+                        <?= $timeline['desc'] ?>
                     </p>
-                    <p class="timeline__paragraph">
-                        I didn't even remove the jumper in the background before recording that video 🤣
+                    <p class="font-medium mt-4">
+                        <?= $timeline['full_date'] ?>
                     </p>
                 </div>
                 <div class="timeline__middle">
                     <div class="timeline__point"></div>
                 </div>
                 <div class="timeline__component">
-                    <div class="timeline__date">February 25, 2019</div>
+                    <div class="timeline__date"><?= $timeline['date'] ?></div>
                 </div>
                 <!--  End of Item Left  -->
             <?php endif;
@@ -93,23 +91,25 @@
         Contact Person</h2>
 
     <div class="flex flex-col items-center justify-around mx-auto mt-12 font-rubik lg:flex-row lg:max-w-4xl">
+        <?php foreach ($contacts as $contact) : ?>
         <!--  Item  -->
         <div class="bg-gray-50 text-center mx-auto py-4 px-10 rounded-lg shadow-lg md:py-9 md:px-16">
-            <h3 class="text-xl font-bold tracking-wide md:text-2xl">Arya Yunanta</h3>
+            <h3 class="text-xl font-bold tracking-wide md:text-2xl"><?= $contact['name'] ?></h3>
             <div class="flex mt-4 text-sm justify-center items-center md:text-base">
                 <div>
                     <img src="<?= base_url('assets/img/whatsapp.png') ?>" alt="wa">
                 </div>
-                <p class="tracking-wider ml-4">08117299881</p>
+                <p class="tracking-wider ml-4"><?= $contact['whatsapp'] ?></p>
             </div>
             <div class="flex mt-2 text-sm justify-center md:text-base">
                 <div>
                     <img src="<?= base_url('assets/img/line.png') ?>" alt="line">
                 </div>
-                <p class="tracking-wider ml-4">@aryaahmph</p>
+                <p class="tracking-wider ml-4"><?= $contact['line'] ?></p>
             </div>
         </div>
         <!-- End of Item   -->
+        <?php endforeach; ?>
     </div>
 </div>
 <!--End of Contact Person-->

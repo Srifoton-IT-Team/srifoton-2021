@@ -74,7 +74,7 @@ class Competition extends BaseController
                         skills, programming skills, and lateral thinking skills.'
                 ]
             ],
-            'contact' => [
+            'contacts' => [
                 [
                     'name' => 'Tarisa Rafika',
                     'whatsapp' => '089621378572',
