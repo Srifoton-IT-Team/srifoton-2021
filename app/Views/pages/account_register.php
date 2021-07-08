@@ -1,6 +1,6 @@
 <?php $this->extend('layouts/sign') ?>
 <?php $this->section('content') ?>
-<div class="w-screen flex justify-center items-centerl">
+<div class="w-screen flex justify-center items-center">
 
     <div class="mt-8 w-full sm:mx-auto sm:w-full sm:max-w-md">
         <!--  Already Registered?  -->
@@ -13,11 +13,9 @@
         <!--  End of Already Registered?  -->
 
         <div class="bg-white py-8 px-16 shadow rounded-lg sm:px-10">
-            <?= csrf_field(); ?>
-            <?php if(isset($validation)):?>
-                <div class="alert alert-danger"><?= $validation->listErrors() ?></div>
-            <?php endif;?>
+
             <form class="mb-0 space-y-5" action="/register/save" method="POST">
+                <?= csrf_field(); ?>
                 <!--   Email   -->
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">Email <span class="text-red-700">*</span> :
@@ -37,20 +35,20 @@
                 <!--  End of Password    -->
                 <!--  Confirm Password    -->
                 <div>
-                    <label for="confirm-password" class="block text-sm font-medium text-gray-700">Confirm Password
+                    <label for="confirm_password" class="block text-sm font-medium text-gray-700">Confirm Password
                         <span class="text-red-700">*</span> : </label>
                     <div class="mt-1">
-                        <input class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand-light" id="confirm-password" name="confirm-password" type="password" autocomplete="on" required>
+                        <input class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand-light" id="confirm_password" name="confirm_password" type="password" autocomplete="on" required>
                     </div>
                 </div>
                 <!--  End of Confirm Password    -->
 
                 <!--  Name   -->
                 <div class="pt-5">
-                    <label for="name" class="block text-sm font-medium text-gray-700">Name <span class="text-red-700">*</span>
+                    <label for="full_name" class="block text-sm font-medium text-gray-700">Name <span class="text-red-700">*</span>
                         : </label>
                     <div class="mt-1">
-                        <input class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand-light" id="name" name="name" type="text" autocomplete="on" required>
+                        <input class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand-light" id="full_name" name="full_name" type="text" autocomplete="on" required>
                     </div>
                 </div>
                 <!--  End of Name    -->
@@ -72,9 +70,9 @@
                 <!--  End of University    -->
                 <!--  Whatsapp   -->
                 <div>
-                    <label for="whatsapp" class="block text-sm font-medium text-gray-700">Whatsapp <span class="text-red-700">*</span> : </label>
+                    <label for="whatsapp_num" class="block text-sm font-medium text-gray-700">Whatsapp <span class="text-red-700">*</span> : </label>
                     <div class="mt-1">
-                        <input class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand-light" id="whatsapp" name="whatsapp" type="text" autocomplete="on" required>
+                        <input class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand-light" id="whatsapp_num" name="whatsapp_num" type="text" autocomplete="on" required>
                     </div>
                 </div>
                 <!--  End of Whatsapp    -->
