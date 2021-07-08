@@ -28,6 +28,11 @@ class Users extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '255',
             ],
+            'nim' => [
+                'type' => 'VARCHAR',
+                'constraint' => '50',
+                'unique' => true,
+            ],
             'university' => [
                 'type' => 'VARCHAR',
                 'constraint' => '100',

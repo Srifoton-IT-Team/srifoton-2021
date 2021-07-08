@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/index.3dd07f83.css') ?>">
     <title>Register | SRIFOTON 2021</title>
 </head>
-<body class="font-rubik bg-gray-100">
+<body class="font-rubik bg-gray-100 overflow-x-hidden py-8">
 
 <?php $this->renderSection('content'); ?>
 
