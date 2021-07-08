@@ -12,7 +12,7 @@ class Register extends BaseController
     {
         helper(['form']);
         $data = [];
-        echo view('pages/account_register', $data);
+        return view('pages/account_register', $data);
     }
 
     public function save()
@@ -23,8 +23,8 @@ class Register extends BaseController
             'password' => 'required|min_length[6]|max_length[200]',
             'confirm-password' => 'matches[password]',
             'name' => 'required|min_length[6]|max_length[200]',
-            'nim' => 'required|min_length[11]|max_length[11]',
-            'university' => 'required|min_length[1]|max_length[200]',
+            'nim' => 'required|min_length[11]|max_length[20]',
+            'university' => 'required|min_length[1]|max_length[100]',
             'whatsapp' => 'required|min_length[10]|max_length[16]'
         ];
 
