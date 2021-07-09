@@ -14,11 +14,6 @@ class User extends BaseController
         $this->userModel = new UserModel();
     }
 
-    public function index()
-    {
-
-    }
-
     public function register()
     {
         session();
@@ -72,5 +67,49 @@ class User extends BaseController
             return redirect()->to('/register')->withInput()->with('validation', $validation);
         }
 
+    }
+
+    public function login()
+    {
+        if (session()->has('logged_in') && (session()->get('logged_in') === true)) {
+            return redirect()->to('/dashboard');
+        }
+        $data = ['title' => 'Login'];
+        return view('pages/account_login', $data);
+    }
+
+    public function loginVerify()
+    {
+        $session = session();
+        $data_form = [
+            'email' => $this->request->getPost('email'),
+            'password' => $this->request->getPost('password'),
+        ];
+
+        $data_db = $this->userModel->where('email', $data_form['email'])->first();
+
+        if ($data_db) {
+            $isPasswordVerify = password_verify($data_form['password'], $data_db['password']);
+            if ($isPasswordVerify) {
+                $session_data = [
+                    'name' => $data_db['full_name'],
+                    'logged_in' => TRUE
+                ];
+                $session->set($session_data);
+                return redirect()->to('/dashboard');
+            } else {
+                $session->setFlashdata('msg', 'Wrong Password');
+                return redirect()->to('/login');
+            }
+        } else {
+            $session->setFlashData('msg', 'Email not found');
+            return redirect()->to('/login');
+        }
+    }
+
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to('/login');
     }
 }

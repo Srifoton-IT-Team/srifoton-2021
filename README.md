@@ -10,8 +10,8 @@ See the following repositories [Srifoton UI](https://github.com/Srifoton-IT-Team
 - [How To Run Development](#how-to-run-how-to-run-development)
 - [SiteMap](#sitemap)
 - [Documentation](#documentation)
-  - [Environment](#environment)
-  - [Database](#database)
+    - [Environment](#environment)
+    - [Database](#database)
 
 ## How to Run Development
 
@@ -72,6 +72,10 @@ If you want to change base setting for project like database password, go to .en
 
 ## Database
 
+### Schema
+
+![Srifoton Database Schema](github/users.png "srifoton_2021 database")
+
 ### Migration
 
 Database Migration is a way to automatically create tables according to what has been determined, this makes it easier
@@ -96,3 +100,10 @@ If the table already exists, and want to update it, do the following :
 ```
 $ php spark migrate:refresh
 ```
+
+## Accounts
+
+### Login
+![How Login Works](github/login-system-design.png "Login flow")
+
+We use session to remember whether the user has logged in or not.
