@@ -71,6 +71,9 @@ class User extends BaseController
 
     public function login()
     {
+        if (session()->has('logged_in') && (session()->get('logged_in') === true)) {
+            return redirect()->to('/dashboard');
+        }
         $data = ['title' => 'Login'];
         return view('pages/account_login', $data);
     }
@@ -93,7 +96,7 @@ class User extends BaseController
                     'logged_in' => TRUE
                 ];
                 $session->set($session_data);
-                return redirect()->to('/');
+                return redirect()->to('/dashboard');
             } else {
                 $session->setFlashdata('msg', 'Wrong Password');
                 return redirect()->to('/login');
@@ -102,5 +105,11 @@ class User extends BaseController
             $session->setFlashData('msg', 'Email not found');
             return redirect()->to('/login');
         }
+    }
+
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to('/login');
     }
 }
