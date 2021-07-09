@@ -1,0 +1,21 @@
+@startuml
+
+start
+if (Have you ever logged in?) then (YES)
+  :Redirect to Dashboard;
+  stop
+else (NO)
+  :Go to Login Page;
+endif
+
+:Input email and password;
+while(Are the email and password correct?) is (NO)
+    :Back to Login Page;
+    :Show error message;
+    endwhile (YES);
+    :Redirect to Dashboard;
+stop
+
+@enduml
+
+
