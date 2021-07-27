@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Style -->
     <link rel="stylesheet" href="<?= base_url('assets/css/index.3dd07f83.css') ?>">
-    <title>SRIFOTON 2021 | HMIF UNSRI</title>
+    <title><?= $title ?> | HMIF UNSRI</title>
 </head>
 <body class="overflow-y-auto overflow-x-hidden">
 
@@ -16,7 +16,7 @@
 
 <!--Footer-->
 <section class="relative h-full pt-20 pb-12 lg:px-24 md:px-16 sm:px-8 px-4 transition-all duration-500 linear"
-         style="background-color: #171636; top: 200vh">
+         style="background-color: #171636; top: <?= $footer_top ?>">
 
     <style>
       .footer-2-4 .list-footer li a {

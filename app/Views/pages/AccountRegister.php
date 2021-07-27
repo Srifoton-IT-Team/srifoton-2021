@@ -13,7 +13,7 @@
             <!--  End of Already Registered?  -->
 
             <div class="bg-white py-8 px-16 shadow rounded-lg sm:px-10">
-                <form class="mb-0 space-y-5" action="#" method="POST">
+                <form class="mb-0 space-y-5" action="/register/submit" method="POST">
                     <!--   Email   -->
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700">Email <span
@@ -23,7 +23,8 @@
                             <input
                                     class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand-light"
                                     id="email"
-                                    name="email" type="email" autocomplete="email" required>
+                                    name="email" type="email" autocomplete="email" value="<?= set_value('email')?>" 
+                                    required>
                         </div>
                     </div>
                     <!--   End of Email   -->
@@ -41,13 +42,13 @@
                     <!--  End of Password    -->
                     <!--  Confirm Password    -->
                     <div>
-                        <label for="confirm-password" class="block text-sm font-medium text-gray-700">Confirm Password
+                        <label for="confpwd" class="block text-sm font-medium text-gray-700">Confirm Password
                             <span
                                     class="text-red-700">*</span> : </label>
                         <div class="mt-1">
                             <input
                                     class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand-light"
-                                    id="confirm-password" name="confirm-password" type="password" autocomplete="off"
+                                    id="confpwd" name="confpwd" type="password" autocomplete="off"
                                     required>
                         </div>
                     </div>
@@ -55,46 +56,50 @@
 
                     <!--  Name   -->
                     <div class="pt-5">
-                        <label for="confirm-password" class="block text-sm font-medium text-gray-700">Name <span
+                        <label for="name" class="block text-sm font-medium text-gray-700">Name <span
                                     class="text-red-700">*</span>
                             : </label>
                         <div class="mt-1">
                             <input
                                     class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand-light"
-                                    id="name" name="name" type="text" autocomplete="off" required>
+                                    id="name" name="name" type="text" autocomplete="off" value="<?= set_value('name')?>"
+                                    required>
                         </div>
                     </div>
                     <!--  End of Name    -->
                     <!--  NIM   -->
                     <div>
-                        <label for="confirm-password" class="block text-sm font-medium text-gray-700">NIM <span
+                        <label for="nim" class="block text-sm font-medium text-gray-700">NIM <span
                                     class="text-red-700">*</span> : </label>
                         <div class="mt-1">
                             <input
                                     class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand-light"
-                                    id="nim" name="nim" type="text" autocomplete="off" required>
+                                    id="nim" name="nim" type="text" autocomplete="off" value="<?= set_value('nim')?>"
+                                    required>
                         </div>
                     </div>
                     <!--  End of NIM    -->
                     <!--  University   -->
                     <div>
-                        <label for="confirm-password" class="block text-sm font-medium text-gray-700">University <span
+                        <label for="university" class="block text-sm font-medium text-gray-700">University <span
                                     class="text-red-700">*</span> : </label>
                         <div class="mt-1">
                             <input
                                     class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand-light"
-                                    id="nim" name="nim" type="text" autocomplete="off" required>
+                                    id="nim" name="nim" type="text" autocomplete="off" value="<?= set_value('university')?>"
+                                    required>
                         </div>
                     </div>
                     <!--  End of University    -->
                     <!--  Whatsapp   -->
                     <div>
-                        <label for="confirm-password" class="block text-sm font-medium text-gray-700">Whatsapp <span
+                        <label for="whatsapp" class="block text-sm font-medium text-gray-700">Whatsapp <span
                                     class="text-red-700">*</span> : </label>
                         <div class="mt-1">
                             <input
                                     class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand-light"
-                                    id="nim" name="nim" type="text" autocomplete="off" required>
+                                    id="nim" name="nim" type="text" autocomplete="off" value="<?= set_value('whatsapp')?>"
+                                    required>
                         </div>
                     </div>
                     <!--  End of Whatsapp    -->

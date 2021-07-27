@@ -13,7 +13,10 @@
             <!--  End of Already Registered?  -->
 
             <div class="bg-white py-8 px-16 shadow rounded-lg sm:px-10">
-                <form class="mb-0 space-y-5" action="#" method="POST">
+                <?php if(session()->getFlashdata('msg')):?>
+                    <div class="alert alert-danger"><?= session()->getFlashdata('msg') ?></div>
+                <?php endif;?>
+                <form class="mb-0 space-y-5" action="/login/verify" method="POST">
                     <!--   Email   -->
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700">Email <span
@@ -40,14 +43,14 @@
                     </div>
                     <!--  End of Password    -->
                     <div class="pt-8">
-                        <a class="btn btn-primary text-white w-full text-center" href="#">Sign In</a>
+                        <button type="submit" class="btn btn-primary text-white w-full text-center">Sign In</button>
                     </div>
                 </form>
             </div>
             <!--  Already Registered?  -->
             <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                 <div class="bg-white py-3 px-3 shadow rounded-lg sm:px-10 text-center text-gray-500">
-                    <p class="text-sm">Don't have account ? <a class="text-brand" href="#">Sign Up</a> now.</p>
+                    <p class="text-sm">Don't have account ? <a class="text-brand" href="/register">Sign Up</a> now.</p>
                 </div>
             </div>
             <!--  End of Already Registered?  -->
