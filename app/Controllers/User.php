@@ -112,4 +112,17 @@ class User extends BaseController
         session()->destroy();
         return redirect()->to('/login');
     }
+
+    public function dashboard()
+    {
+        // Validate has login or not
+        $session = session();
+        $session->get('logged_in');
+
+        $data = [
+            'title' => 'Dashboard'
+        ];
+
+        return view('pages/account_register', $data);
+    }
 }
