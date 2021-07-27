@@ -95,6 +95,8 @@ Here's how to run the migration :
 $ php spark migrate
 ```
 
+If the migration doesn't work, drop table migrations in your database.
+
 If the table already exists, and want to update it, do the following :
 
 ```

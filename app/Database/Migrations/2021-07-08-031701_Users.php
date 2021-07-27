@@ -41,6 +41,33 @@ class Users extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '50',
             ],
+            'image_cp' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+                'null' => true
+            ],
+            'image_uiux' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+                'null' => true
+            ],
+            'image_photo' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+                'null' => true
+            ],
+            'valid_cp' => [
+                'type' => 'BOOLEAN',
+                'default' => false
+            ],
+            'valid_uiux' => [
+                'type' => 'BOOLEAN',
+                'default' => false
+            ],
+            'valid_photography' => [
+                'type' => 'BOOLEAN',
+                'default' => false
+            ],
             'created_at' => [
                 'type' => 'TIMESTAMP'
             ],
