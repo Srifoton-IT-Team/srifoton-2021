@@ -66,7 +66,6 @@ class User extends BaseController
             $validation = Services::validation();
             return redirect()->to('/register')->withInput()->with('validation', $validation);
         }
-
     }
 
     public function login()
@@ -93,7 +92,8 @@ class User extends BaseController
             if ($isPasswordVerify) {
                 $session_data = [
                     'name' => $data_db['full_name'],
-                    'logged_in' => TRUE
+                    'logged_in' => TRUE,
+                    'userId' => $data_db['id']
                 ];
                 $session->set($session_data);
                 return redirect()->to('/dashboard');
@@ -124,5 +124,31 @@ class User extends BaseController
         ];
 
         return view('pages/account_register', $data);
+    }
+
+    public function uploadImage()
+    {
+        $session = session();
+        $session->get('logged_in');
+
+        $image = $this->request->getFile('bukti_pembayaran');
+        $image->move('users');
+
+        $rules = [
+            'bukti_pembayaran' => [
+                'rules' => 'uploaded[bukti_pembayaran]|is_image[bukti_pembayaran]',
+                'errors' => [
+                    'uploaded' => 'upload bukti pembayaran',
+                    'is_image' => 'yang anda upload bukan gambar'
+                ]
+            ]
+        ];
+        if($this->validate($rules)){
+            $data = [
+                'image_uiux' => $image->getName(),
+            ];
+        }
+
+        $this->userModel->update($session->id, $data);
     }
 }
