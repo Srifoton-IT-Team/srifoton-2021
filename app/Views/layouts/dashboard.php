@@ -33,9 +33,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                <a class="nav-link" href="#">Competition</a>
-                <a class="nav-link" href="#">Settings</a>
+                <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
+                <a class="nav-link" href="/dashboard/uploadImage">Competition</a>
+                <a class="nav-link" href="/settings">Settings</a>
             </div>
         </div>
         <div class="d-flex">

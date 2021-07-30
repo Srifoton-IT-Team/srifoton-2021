@@ -122,10 +122,14 @@ class User extends BaseController
             return redirect()->to('/login');
         }
 
+        $data_db = $this->userModel->where('id', session()->get('userId'))->first();
         $data = [
-            'title' => 'Dashboard'
+            'title' => 'Dashboard',
+            'name' => $data_db['full_name'],
+            'valid_uiux' => $data_db['valid_uiux'],
+            'valid_cp' => $data_db['valid_cp'],
+            'valid_photography' => $data_db['valid_photography']
         ];
-
         return view('pages/AccountDashboard', $data);
     }
 
@@ -169,10 +173,7 @@ class User extends BaseController
             ];
 
             $this->userModel->update(session()->get('userId'), $data);
-            $dataDashboard = [
-                'title' => 'Dashboard'
-            ];
-            return view('pages/AccountDashboard', $dataDashboard);
+            return $this->dashboard();
         } else {
             return redirect()->to('/dashboard/uploadImage')->withInput();
         }
