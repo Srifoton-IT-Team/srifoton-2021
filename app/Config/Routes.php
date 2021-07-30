@@ -43,6 +43,10 @@ $routes->get('/competitive-programming', 'Competition::cp');
 $routes->get('/ui-ux-design', 'Competition::ui_ux');
 $routes->get('/photography', 'Competition::photo');
 
+$routes->get('/dashboard', 'User::dashboard');
+$routes->get('/dashboard/uploadImage', 'User::uploadImage');
+$routes->post('/dashboard/uploadImage/verify', 'User::uploadImageVerify');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

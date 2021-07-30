@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use CodeIgniter\Exceptions\PageNotFoundException;
 use Config\Services;
 
 class User extends BaseController
@@ -63,8 +64,9 @@ class User extends BaseController
             return redirect()->to('/login');
         } else {
             // Send error message to Register Page
-            $validation = Services::validation();
-            return redirect()->to('/register')->withInput()->with('validation', $validation);
+//            $validation = Services::validation();
+//            return redirect()->to('/register')->withInput()->with('validation', $validation);
+            return redirect()->to('/register')->withInput();
         }
     }
 
@@ -116,39 +118,63 @@ class User extends BaseController
     public function dashboard()
     {
         // Validate has login or not
-        $session = session();
-        $session->get('logged_in');
+        if (!(session()->has('logged_in') && (session()->get('logged_in') === true))) {
+            return redirect()->to('/login');
+        }
 
         $data = [
             'title' => 'Dashboard'
         ];
 
-        return view('pages/account_register', $data);
+        return view('pages/AccountDashboard', $data);
     }
 
     public function uploadImage()
     {
-        $session = session();
-        $session->get('logged_in');
-
-        $image = $this->request->getFile('bukti_pembayaran');
-        $image->move('users');
-
-        $rules = [
-            'bukti_pembayaran' => [
-                'rules' => 'uploaded[bukti_pembayaran]|is_image[bukti_pembayaran]',
-                'errors' => [
-                    'uploaded' => 'upload bukti pembayaran',
-                    'is_image' => 'yang anda upload bukan gambar'
-                ]
-            ]
-        ];
-        if($this->validate($rules)){
-            $data = [
-                'image_uiux' => $image->getName(),
-            ];
+        // Validate has login or not
+        if (!(session()->has('logged_in') && (session()->get('logged_in') === true))) {
+            return redirect()->to('/login');
         }
 
-        $this->userModel->update($session->id, $data);
+        $data = [
+            'title' => 'Upload Image',
+            'validation' => Services::validation()
+        ];
+        return view('pages/AccountUploadImages', $data);
+    }
+
+    public function uploadImageVerify()
+    {
+        // Validate has login or not
+        if (!(session()->has('logged_in') && (session()->get('logged_in') === true))) {
+            return redirect()->to('/login');
+        }
+
+        $competitionType = $this->request->getPost('competition');
+        if (!($competitionType === "image_cp" || $competitionType === "image_uiux" || $competitionType === "image_photo")) {
+            throw new \Exception("Competition type not valid");
+        }
+
+        $rules = [
+            'imageFile' => [
+                'rules' => 'uploaded[imageFile]|max_size[imageFile,1024]|is_image[imageFile]|mime_in[imageFile,image/jpg,image/jpeg,image/png]',
+            ]
+        ];
+        if ($this->validate($rules)) {
+            $image = $this->request->getFile('imageFile');
+            $newName = $image->getRandomName();
+            $image->move('users', $newName);
+            $data = [
+                $competitionType => $newName
+            ];
+
+            $this->userModel->update(session()->get('userId'), $data);
+            $dataDashboard = [
+                'title' => 'Dashboard'
+            ];
+            return view('pages/AccountDashboard', $dataDashboard);
+        } else {
+            return redirect()->to('/dashboard/uploadImage')->withInput();
+        }
     }
 }
