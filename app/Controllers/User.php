@@ -178,4 +178,109 @@ class User extends BaseController
             return redirect()->to('/dashboard/uploadImage')->withInput();
         }
     }
+
+    public function update()
+    {
+        // Validate has login or not
+        if (!(session()->has('logged_in') && (session()->get('logged_in') === true))) {
+            return redirect()->to('/login');
+        }
+        
+        $data_db = $this->userModel->where('id', session()->get('userId'))->first();
+
+        $data = [
+            'title' => 'Update User Information',
+            'validation' => Services::validation(),
+            'full_name' => $data_db['full_name'],
+            'nim' => $data_db['nim'],
+            'university' => $data_db['university'],
+            'whatsapp_num' => $data_db['whatsapp_num']
+        ];
+
+        return view('pages/account_update', $data);
+    }
+
+    public function updateSave()
+    {
+        // Validate has login or not
+        if (!(session()->has('logged_in') && (session()->get('logged_in') === true))) {
+            return redirect()->to('/login');
+        }
+
+        // Validation rules
+        $rules = [
+            'full_name' => 'required|min_length[6]|max_length[255]',
+            'nim' => 'required|min_length[10]|max_length[20]', // No uniqueness, workaround for data not updating (validation not pass, this thing been bugging me for 5 days god damn)
+            'university' => 'required|min_length[5]|max_length[200]',
+            'whatsapp_num' => 'required|min_length[10]|max_length[16]'
+        ];
+
+        $data = [
+            'full_name' => $this->request->getPost('full_name'),
+            'nim' => $this->request->getPost('nim'),
+            'university' => $this->request->getPost('university'),
+            'whatsapp_num' => $this->request->getPost('whatsapp_num')
+        ];
+
+        if ($this->validate($rules)) {
+            // Submit data
+            $this->userModel->update(session()->get('userId'), $data);
+        }
+        return redirect()->to('/dashboard');
+    }
+
+    public function updatePass()
+    {
+        // Validate has login or not
+        if (!(session()->has('logged_in') && (session()->get('logged_in') === true))) {
+            return redirect()->to('/login');
+        }
+
+        $data = [
+            'title' => 'Update Password',
+            'validation' => Services::validation(),
+        ];
+
+        return view('pages/password_update', $data);
+    }
+
+    public function updatePassSave()
+    {
+        // Validate has login or not
+        if (!(session()->has('logged_in') && (session()->get('logged_in') === true))) {
+            return redirect()->to('/login');
+        }
+
+        $data_db = $this->userModel->where('id', session()->get('userId'))->first();
+
+        // Validation rules
+        $rules = [
+            'password' => 'required|min_length[8]|max_length[12]',
+            'new_pass' => 'required|min_length[8]|max_length[12]', // No uniqueness, workaround for data not updating (validation not pass, this thing been bugging me for 5 days god damn)
+            'confirm_new_pass' => 'required|matches[new_pass]',
+        ];
+
+        $data = [
+            'password' => $this->request->getPost('password'),
+            'new_pass' => $this->request->getPost('new_pass'),
+            'confirm_new_pass' => $this->request->getPost('confirm_new_pass')
+        ];
+
+        if ($this->validate($rules)) {
+            if ($data_db) {
+                $isPasswordVerify = password_verify($data['password'], $data_db['password']);
+                if ($isPasswordVerify) {
+                    $data_change = [
+                        'password' => password_hash($data['new_pass'], PASSWORD_DEFAULT)
+                    ];
+                } else {
+                    session()->setFlashdata('msg', 'Wrong Password');
+                    return redirect()->to('/update-pass');
+                }
+            }
+            // Submit data
+            $this->userModel->update(session()->get('userId'), $data_change);
+        }
+        return redirect()->to('/dashboard');
+    }
 }
