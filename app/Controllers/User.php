@@ -185,7 +185,7 @@ class User extends BaseController
         if (!(session()->has('logged_in') && (session()->get('logged_in') === true))) {
             return redirect()->to('/login');
         }
-        
+
         $data_db = $this->userModel->where('id', session()->get('userId'))->first();
 
         $data = [
@@ -193,6 +193,7 @@ class User extends BaseController
             'validation' => Services::validation(),
             'full_name' => $data_db['full_name'],
             'nim' => $data_db['nim'],
+            'email' => $data_db['email'],
             'university' => $data_db['university'],
             'whatsapp_num' => $data_db['whatsapp_num']
         ];
@@ -218,6 +219,7 @@ class User extends BaseController
         $data = [
             'full_name' => $this->request->getPost('full_name'),
             'nim' => $this->request->getPost('nim'),
+            'email' => $this->request->getPost('email'),
             'university' => $this->request->getPost('university'),
             'whatsapp_num' => $this->request->getPost('whatsapp_num')
         ];
@@ -225,8 +227,11 @@ class User extends BaseController
         if ($this->validate($rules)) {
             // Submit data
             $this->userModel->update(session()->get('userId'), $data);
+            return redirect()->to('/dashboard');
+        } else {
+            return redirect()->to('/dashboard/update')->withInput();
         }
-        return redirect()->to('/dashboard');
+
     }
 
     public function updatePass()

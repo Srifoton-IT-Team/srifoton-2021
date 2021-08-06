@@ -72,13 +72,13 @@
                     <h2 class="title-font font-semibold text-2xl mb-5 text-white">Competition</h2>
                     <nav class="list-none list-footer space-y-5">
                         <li>
-                            <a href="#">Competitive Programming</a>
+                            <a href="/competitive-programming">Competitive Programming</a>
                         </li>
                         <li>
-                            <a href="#">UI/UX Design</a>
+                            <a href="/ui-ux-design">UI/UX Design</a>
                         </li>
                         <li>
-                            <a href="#">Photography</a>
+                            <a href="/photography">Photography</a>
                         </li>
                     </nav>
                 </div>

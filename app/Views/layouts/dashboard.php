@@ -35,7 +35,7 @@
             <div class="navbar-nav">
                 <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
                 <a class="nav-link" href="/dashboard/uploadImage">Competition</a>
-                <a class="nav-link" href="/settings">Settings</a>
+                <a class="nav-link" href="/dashboard/update">Settings</a>
             </div>
         </div>
         <div class="d-flex">

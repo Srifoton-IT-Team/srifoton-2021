@@ -37,10 +37,6 @@ $routes->get('/login', 'User::login');
 $routes->post('/login/verify', 'User::loginVerify');
 $routes->get('/register', 'User::register');
 $routes->post('/register/save', 'User::registerSave');
-$routes->get('/update', 'User::update');
-$routes->post('/update/save', 'User::updateSave');
-$routes->get('/update-pass', 'User::updatePass');
-$routes->post('/update-pass/save', 'User::updatePassSave');
 $routes->get('/logout', 'User::logout');
 
 $routes->get('/competitive-programming', 'Competition::cp');
@@ -50,6 +46,10 @@ $routes->get('/photography', 'Competition::photo');
 $routes->get('/dashboard', 'User::dashboard');
 $routes->get('/dashboard/uploadImage', 'User::uploadImage');
 $routes->post('/dashboard/uploadImage/verify', 'User::uploadImageVerify');
+$routes->get('/dashboard/update', 'User::update');
+$routes->post('/dashboard/update/save', 'User::updateSave');
+$routes->get('/dashboard/update-pass', 'User::updatePass');
+$routes->post('/dashboard/update-pass/save', 'User::updatePassSave');
 
 /*
  * --------------------------------------------------------------------
