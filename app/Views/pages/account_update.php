@@ -54,5 +54,48 @@
             </div>
         </div>
         <!-- End of Form -->
+
+        <div class="row">
+            <div class="col-8 col-lg-12 text-center mx-auto mt-5">
+                <h2>Password Settings</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-10 col-lg-6 mx-auto mt-5 mb-5">
+                <p><?= session()->getFlashdata('msg') ?></p>
+                <form action="/dashboard/update-pass/save" class="mb-5 pb-5" method="post">
+                    <?= csrf_field(); ?>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input
+                                type="password"
+                                class="form-control"
+                                id="password"
+                                name="password"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="new_pass" class="form-label">New Password</label>
+                        <input
+                                type="password"
+                                class="form-control"
+                                id="new_pass"
+                                name="new_pass"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirm_new_pass" class="form-label">Confirm New Password</label>
+                        <input
+                                type="password"
+                                class="form-control"
+                                id="confirm_new_pass"
+                                name="confirm_new_pass"
+                        />
+                    </div>
+                    <button type="submit" class="mt-3 mb-5 btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
     </div>
 <?php $this->endSection() ?>
