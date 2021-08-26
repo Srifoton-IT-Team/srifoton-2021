@@ -234,21 +234,6 @@ class User extends BaseController
 
     }
 
-    public function updatePass()
-    {
-        // Validate has login or not
-        if (!(session()->has('logged_in') && (session()->get('logged_in') === true))) {
-            return redirect()->to('/login');
-        }
-
-        $data = [
-            'title' => 'Update Password',
-            'validation' => Services::validation(),
-        ];
-
-        return view('pages/password_update', $data);
-    }
-
     public function updatePassSave()
     {
         // Validate has login or not
@@ -280,7 +265,7 @@ class User extends BaseController
                     ];
                 } else {
                     session()->setFlashdata('msg', 'Wrong Password');
-                    return redirect()->to('/update-pass');
+                    return redirect()->to('/dashboard/update');
                 }
             }
             // Submit data
