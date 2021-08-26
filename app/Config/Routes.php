@@ -48,7 +48,6 @@ $routes->get('/dashboard/uploadImage', 'User::uploadImage');
 $routes->post('/dashboard/uploadImage/verify', 'User::uploadImageVerify');
 $routes->get('/dashboard/update', 'User::update');
 $routes->post('/dashboard/update/save', 'User::updateSave');
-$routes->get('/dashboard/update-pass', 'User::updatePass');
 $routes->post('/dashboard/update-pass/save', 'User::updatePassSave');
 
 /*
